@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vy5-kf-al1">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="eMd-09-Muc">
+            <objects>
+                <tableViewController id="vy5-kf-al1" customClass="ViewController" customModule="MangaView" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cIP-Ip-326">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SinglePageCell" id="rSw-H9-wa3" customClass="SinglePageCell" customModule="MangaView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rSw-H9-wa3" id="3th-hL-4Xn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5V6-YB-mYf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-fy-M6C" customClass="BigNumberView" customModule="MangaView" customModuleProvider="target">
+                                                    <rect key="frame" x="87" y="186" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" placeholder="YES" id="TLf-dJ-20Y"/>
+                                                        <constraint firstAttribute="height" constant="128" placeholder="YES" id="qke-zw-VOs"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="iC3-fy-M6C" firstAttribute="centerY" secondItem="5V6-YB-mYf" secondAttribute="centerY" id="CrC-NA-bnF"/>
+                                                <constraint firstAttribute="height" priority="999" constant="500" id="SFn-Di-JAr"/>
+                                                <constraint firstItem="iC3-fy-M6C" firstAttribute="centerX" secondItem="5V6-YB-mYf" secondAttribute="centerX" id="j32-j6-vSe"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5V6-YB-mYf" firstAttribute="leading" secondItem="3th-hL-4Xn" secondAttribute="leading" id="5oo-EH-uou"/>
+                                        <constraint firstItem="5V6-YB-mYf" firstAttribute="top" secondItem="3th-hL-4Xn" secondAttribute="top" id="M4w-a6-HER"/>
+                                        <constraint firstAttribute="trailing" secondItem="5V6-YB-mYf" secondAttribute="trailing" id="Vpa-Nm-tfm"/>
+                                        <constraint firstAttribute="bottom" secondItem="5V6-YB-mYf" secondAttribute="bottom" id="qO8-y1-xDz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="numberView" destination="iC3-fy-M6C" id="3ol-dQ-DTy"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OffsetCell" id="hMp-Xi-41q" customClass="OffsetCell" customModule="MangaView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="528" width="414" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMp-Xi-41q" id="X1i-oY-gF6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeF-n4-DnC">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="999" constant="500" id="e9p-mi-dsp"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="eeF-n4-DnC" secondAttribute="trailing" id="7N0-bW-L2U"/>
+                                        <constraint firstItem="eeF-n4-DnC" firstAttribute="leading" secondItem="X1i-oY-gF6" secondAttribute="leading" id="Jz8-1i-Iqp"/>
+                                        <constraint firstAttribute="bottom" secondItem="eeF-n4-DnC" secondAttribute="bottom" id="TZL-Iy-YDR"/>
+                                        <constraint firstItem="eeF-n4-DnC" firstAttribute="top" secondItem="X1i-oY-gF6" secondAttribute="top" id="YPA-f3-Xeb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="e9p-mi-dsp" id="03X-XS-bON"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="vy5-kf-al1" id="9hi-Qw-gRl"/>
+                            <outlet property="delegate" destination="vy5-kf-al1" id="6tr-Fh-UYg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rum-cN-vha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136" y="783"/>
+        </scene>
+    </scenes>
+</document>

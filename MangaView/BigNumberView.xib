@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BigNumberView" customModule="MangaView" customModuleProvider="target">
+            <connections>
+                <outlet property="numberLabel" destination="qLZ-Dz-NHd" id="tV5-kE-TZa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="227" height="227"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="qLZ-Dz-NHd">
+                    <rect key="frame" x="0.0" y="0.0" width="227" height="227"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="190"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qLZ-Dz-NHd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5ic-hn-qkK"/>
+                <constraint firstAttribute="bottom" secondItem="qLZ-Dz-NHd" secondAttribute="bottom" id="77d-eR-s0o"/>
+                <constraint firstItem="qLZ-Dz-NHd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tUZ-yL-kTz"/>
+                <constraint firstAttribute="trailing" secondItem="qLZ-Dz-NHd" secondAttribute="trailing" id="wmx-sv-Mq9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+</document>

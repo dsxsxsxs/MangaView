@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TwoFacingPageView" customModule="MangaView" customModuleProvider="target">
+            <connections>
+                <outlet property="contentLabel" destination="I23-QJ-wKR" id="rjC-6x-X6b"/>
+                <outlet property="heightConstraint" destination="mnN-Ba-3EP" id="PcI-EW-21L"/>
+                <outlet property="scrollView" destination="BVd-W4-XwI" id="Sbg-vJ-waA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="227"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVd-W4-XwI">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="227"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JX0-Ln-nxn">
+                            <rect key="frame" x="0.0" y="0.0" width="1149.5" height="227"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABCDEFGHIJK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I23-QJ-wKR">
+                                    <rect key="frame" x="0.0" y="0.0" width="1149.5" height="227"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="999" constant="500" id="mnN-Ba-3EP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="160"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="JX0-Ln-nxn" firstAttribute="height" secondItem="chg-AJ-P0Q" secondAttribute="height" id="FIq-Q4-9uW"/>
+                        <constraint firstItem="cDq-rR-dGI" firstAttribute="bottom" secondItem="JX0-Ln-nxn" secondAttribute="bottom" id="YaL-Vu-u0d"/>
+                        <constraint firstItem="JX0-Ln-nxn" firstAttribute="leading" secondItem="chg-AJ-P0Q" secondAttribute="leading" id="ggQ-1x-AjY"/>
+                        <constraint firstItem="JX0-Ln-nxn" firstAttribute="top" secondItem="cDq-rR-dGI" secondAttribute="top" id="laN-DJ-bXX"/>
+                        <constraint firstItem="JX0-Ln-nxn" firstAttribute="trailing" secondItem="chg-AJ-P0Q" secondAttribute="trailing" id="zfj-9R-oJf"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="chg-AJ-P0Q"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="cDq-rR-dGI"/>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BVd-W4-XwI" secondAttribute="trailing" id="Egx-ag-PVx"/>
+                <constraint firstAttribute="bottom" secondItem="BVd-W4-XwI" secondAttribute="bottom" id="cxl-hN-MSe"/>
+                <constraint firstItem="BVd-W4-XwI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fRW-MA-z8B"/>
+                <constraint firstItem="BVd-W4-XwI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uEm-Qs-6vT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+</document>
