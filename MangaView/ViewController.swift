@@ -25,11 +25,6 @@ final class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(TwoFacingPageView.self, forHeaderFooterViewReuseIdentifier: "TwoFacingPageView")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
-    }
-
-    @objc private func didTapClose() {
-        dismiss(animated: true, completion: nil)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
