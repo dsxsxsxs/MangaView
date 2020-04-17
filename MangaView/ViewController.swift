@@ -65,7 +65,7 @@ final class ViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OffsetCell", for: indexPath) as! OffsetCell
             let safeFrame = self.safeFrame
             cell.configure(height: safeFrame.height)
-            scrollOffsetObservers[indexPath.section] = {[weak self] in
+            scrollOffsetObservers[indexPath.section] = { [weak self] in
                 let rect = tableView.rectForRow(at: indexPath)
                 let rectInSuperview = tableView.convert(rect, to: tableView.superview)
                 let offsetY = rectInSuperview.minY - safeFrame.minY

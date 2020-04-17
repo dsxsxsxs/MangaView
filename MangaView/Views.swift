@@ -10,6 +10,7 @@ import UIKit
 
 final class BigNumberView: UIView {
     @IBOutlet private weak var numberLabel: UILabel!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -36,7 +37,6 @@ final class TwoFacingPageView: UITableViewHeaderFooterView {
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
-
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -67,6 +67,7 @@ final class TwoFacingPageView: UITableViewHeaderFooterView {
 
 final class SinglePageCell: UITableViewCell {
     @IBOutlet private weak var numberView: BigNumberView!
+
     func configure(number: Int) {
         numberView.configure(number: number)
     }
@@ -74,6 +75,7 @@ final class SinglePageCell: UITableViewCell {
 
 final class OffsetCell: UITableViewCell {
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
+
     func configure(height: CGFloat) {
         heightConstraint.constant = height
     }
