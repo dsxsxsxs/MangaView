@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 final class ViewController: UITableViewController {
     private let dataSource: [Section] = [
@@ -19,8 +20,9 @@ final class ViewController: UITableViewController {
 
     private lazy var safeFrame: CGRect = UIApplication.shared.windows.first!.safeAreaLayoutGuide.layoutFrame
 
-    private var twoFacingPageScrollRateObservers: [Int: Holder] = [:]
-    private var scrollOffsetObservers: [Int: () -> Void] = [:]
+    private var tableViewDidScrollEvent = PassthroughSubject<Void, Never>()
+    @Published private var twoFacingPageScrollRate = ScrollRate(section: 0, rate: 1)
+    private var scrollRateCancellables: [Int: AnyCancellable] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,13 @@ final class ViewController: UITableViewController {
         switch dataSource[section] {
         case .twoFacing:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TwoFacingPageView") as! TwoFacingPageView
-            view.configure(number: section, height: safeFrame.height)
-            twoFacingPageScrollRateObservers = twoFacingPageScrollRateObservers.filter { $1.view != view }
-            twoFacingPageScrollRateObservers[section] = .init(view: view) {
-                view.configure(rate: $0)
-            }
+            view.configure(
+                number: section,
+                height: safeFrame.height,
+                rate: self.$twoFacingPageScrollRate.filter { $0.section == section }
+                    .map { $0.rate }
+                    .eraseToAnyPublisher()
+            )
             return view
         case .regular:
             return nil
@@ -65,13 +69,15 @@ final class ViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OffsetCell", for: indexPath) as! OffsetCell
             let safeFrame = self.safeFrame
             cell.configure(height: safeFrame.height)
-            scrollOffsetObservers[indexPath.section] = { [weak self] in
-                let rect = tableView.rectForRow(at: indexPath)
-                let rectInSuperview = tableView.convert(rect, to: tableView.superview)
-                let offsetY = rectInSuperview.minY - safeFrame.minY
-                let normalized = max(0, min(offsetY, safeFrame.height))
-                self?.twoFacingPageScrollRateObservers[indexPath.section]?.fn(normalized / safeFrame.height)
-            }
+            scrollRateCancellables[indexPath.section] = tableViewDidScrollEvent
+                .map { _ in
+                    let rect = tableView.rectForRow(at: indexPath)
+                    let rectInSuperview = tableView.convert(rect, to: tableView.superview)
+                    let offsetY = rectInSuperview.minY - safeFrame.minY
+                    let normalized = max(0, min(offsetY, safeFrame.height))
+                    return .init(section: indexPath.section, rate: normalized / safeFrame.height)
+                }
+                .assign(to: \.twoFacingPageScrollRate, on: self)
             return cell
         case .page:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SinglePageCell", for: indexPath) as! SinglePageCell
@@ -81,9 +87,7 @@ final class ViewController: UITableViewController {
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        for fn in scrollOffsetObservers.values {
-            fn()
-        }
+        tableViewDidScrollEvent.send(())
     }
 }
 
@@ -115,8 +119,8 @@ extension ViewController {
         }
     }
 
-    private struct Holder {
-        let view: UIView
-        let fn: (CGFloat) -> Void
+    private struct ScrollRate {
+        let section: Int
+        let rate: CGFloat
     }
 }

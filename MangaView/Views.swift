@@ -33,10 +33,12 @@ final class BigNumberView: UIView {
     }
 }
 
+import Combine
 final class TwoFacingPageView: UITableViewHeaderFooterView {
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
+    private var cancellable: AnyCancellable = .init {}
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -55,13 +57,13 @@ final class TwoFacingPageView: UITableViewHeaderFooterView {
         view.snap(to: self)
     }
 
-    func configure(number: Int, height: CGFloat) {
+    func configure(number: Int, height: CGFloat, rate: AnyPublisher<CGFloat, Never>) {
         contentLabel.text = "A\(number)B\(number)C\(number)D"
         heightConstraint.constant = height
-    }
-
-    func configure(rate: CGFloat) {
-        scrollView.contentOffset = CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.width) * rate, y: 0)
+        cancellable = rate.sink { [weak scrollView] in
+            guard let scrollView = scrollView else { return }
+            scrollView.contentOffset = CGPoint(x: (scrollView.contentSize.width - scrollView.bounds.width) * $0, y: 0)
+        }
     }
 }
 
